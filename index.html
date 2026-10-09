@@ -4,10 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#170e30">
 
     <title>Happy Birthday Nafiu 🎂❤️</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
 
     <style>
         * {
@@ -16,20 +20,46 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Poppins', 'Hind Siliguri', sans-serif;
-            background: linear-gradient(
-                135deg,
-                #0c1027,
-                #261044,
-                #351547,
-                #11152f
-            );
-            background-attachment: fixed;
+            background:
+                radial-gradient(circle at top left, #4b205c 0%, transparent 45%),
+                radial-gradient(circle at bottom right, #263765 0%, transparent 45%),
+                #110c26;
+
             color: white;
             text-align: center;
             overflow-x: hidden;
             min-height: 100vh;
+        }
+
+        /* BACKGROUND GLOW */
+
+        .background-glow {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            background: #ff70ac;
+            border-radius: 50%;
+            filter: blur(140px);
+            opacity: 0.18;
+            pointer-events: none;
+            z-index: 0;
+            animation: glowMove 9s ease-in-out infinite alternate;
+        }
+
+        @keyframes glowMove {
+            from {
+                transform: translate(-50px, 0);
+            }
+
+            to {
+                transform: translate(180px, 220px);
+            }
         }
 
         /* SCREENS */
@@ -39,7 +69,7 @@
             min-height: 100vh;
             min-height: 100dvh;
             width: 100%;
-            padding: 85px 18px 45px;
+            padding: 85px 16px 45px;
             flex-direction: column;
             align-items: center;
             justify-content: center;
@@ -64,30 +94,36 @@
             }
         }
 
-        /* CARD */
+        /* CARDS */
 
         .card {
             width: 100%;
             max-width: 650px;
             padding: 35px 25px;
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.17);
-            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 26px;
+
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.3),
+                inset 0 1px rgba(255,255,255,0.1);
         }
 
         h1 {
             font-size: clamp(30px, 7vw, 55px);
             line-height: 1.3;
             margin-bottom: 20px;
+
             background: linear-gradient(
                 90deg,
                 #ff8dbb,
                 #ffe08a,
                 #93f0ff
             );
+
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -112,16 +148,20 @@
             margin: 15px 5px 0;
             border: none;
             border-radius: 50px;
+
             font-family: inherit;
             font-size: 15px;
             font-weight: 700;
+
             background: linear-gradient(
                 90deg,
                 #ff83b5,
                 #ffdb83
             );
+
             color: #28152e;
             cursor: pointer;
+
             box-shadow: 0 7px 25px rgba(255,100,160,0.3);
             transition: 0.3s;
         }
@@ -142,18 +182,25 @@
             top: 15px;
             right: 15px;
             z-index: 100;
+
             font-size: 12px;
-            padding: 11px 15px;
+            padding: 10px 16px;
             margin: 0;
+
+            background: rgba(255,255,255,0.13);
+            border: 1px solid rgba(255,255,255,0.25);
+            color: white;
+            backdrop-filter: blur(10px);
         }
 
         /* GIFT */
 
         .gift {
-            font-size: 115px;
+            font-size: 120px;
             cursor: pointer;
-            margin: 30px auto;
             display: inline-block;
+            margin: 30px auto;
+
             animation: giftBounce 2s infinite;
             filter: drop-shadow(0 0 25px #ff8ab0);
         }
@@ -168,15 +215,16 @@
             }
         }
 
-        /* PHOTO */
+        /* PHOTO FRAME */
 
         .photo-container {
-            position: relative;
-            width: 215px;
-            height: 215px;
-            margin: 20px auto 25px;
-            border-radius: 50%;
+            width: 220px;
+            height: 220px;
+            margin: 25px auto;
             padding: 7px;
+
+            border-radius: 50%;
+
             background: linear-gradient(
                 45deg,
                 #ff72b5,
@@ -184,8 +232,11 @@
                 #8ae9ff,
                 #ff72b5
             );
+
             background-size: 300% 300%;
+
             animation: glowingBorder 4s linear infinite;
+
             box-shadow:
                 0 0 25px rgba(255,112,181,0.6),
                 0 0 50px rgba(255,112,181,0.25);
@@ -211,36 +262,44 @@
             border-radius: 50%;
             object-fit: cover;
             object-position: center;
-            border: 4px solid #211339;
             display: block;
+            border: 4px solid #211339;
+        }
+
+        .photo-fallback {
+            display: none;
+            padding-top: 55px;
+            color: white;
+            font-size: 14px;
         }
 
         /* NAME */
 
         .name {
-            font-size: clamp(25px, 5vw, 39px);
+            font-size: clamp(25px, 5vw, 40px);
             font-weight: 800;
             color: #ffb1d2;
             line-height: 1.4;
         }
 
-        .badge {
+        .legend-badge {
             display: inline-block;
             background: linear-gradient(90deg,#ffcf72,#ff9dac);
             color: #28132d;
             border-radius: 30px;
-            padding: 9px 18px;
+            padding: 10px 18px;
             font-size: 13px;
             font-weight: 700;
             margin: 20px 0;
         }
 
-        /* JOKES */
+        /* FUNNY MESSAGE */
 
         .joke-box {
             margin: 25px 0;
             border-radius: 20px;
             padding: 20px;
+
             background: rgba(255,141,187,0.12);
             border: 1px dashed #ff9fc9;
         }
@@ -255,7 +314,7 @@
             font-weight: 700;
         }
 
-        /* BIRTHDAY CAKE */
+        /* CAKE */
 
         .cake {
             position: relative;
@@ -300,7 +359,9 @@
             position: absolute;
             left: 109px;
             bottom: 137px;
+
             border-radius: 3px;
+
             background: repeating-linear-gradient(
                 45deg,
                 white 0px,
@@ -316,13 +377,16 @@
             bottom: 178px;
             height: 30px;
             width: 20px;
+
             border-radius: 50% 50% 50% 0;
+
             background: radial-gradient(
                 circle,
                 #fffcc4,
                 #ffca39,
                 #ff651a
             );
+
             box-shadow: 0 0 25px #ffb829;
             transform: rotate(-45deg);
             animation: flicker 0.3s infinite alternate;
@@ -351,7 +415,7 @@
             line-height: 2;
         }
 
-        /* FLOATING BALLOONS */
+        /* BALLOONS */
 
         .balloon {
             position: fixed;
@@ -388,7 +452,7 @@
             }
         }
 
-        /* FINAL SCREEN */
+        /* FINAL */
 
         .final-emoji {
             font-size: 70px;
@@ -405,7 +469,6 @@
         /* MOBILE RESPONSIVE */
 
         @media (max-width: 600px) {
-
             .screen {
                 padding: 80px 15px 40px;
             }
@@ -416,12 +479,12 @@
             }
 
             .photo-container {
-                width: 180px;
-                height: 180px;
+                width: 185px;
+                height: 185px;
             }
 
             .gift {
-                font-size: 95px;
+                font-size: 100px;
             }
 
             .joke-box p {
@@ -444,8 +507,12 @@
         }
 
         @media (prefers-reduced-motion: reduce) {
-            .gift, .final-emoji, .photo-container,
-            .flame, .balloon, .confetti {
+            .gift,
+            .final-emoji,
+            .photo-container,
+            .flame,
+            .balloon,
+            .confetti {
                 animation: none;
             }
         }
@@ -454,19 +521,21 @@
 
 <body>
 
-    <!-- BACKGROUND MUSIC -->
+    <div class="background-glow"></div>
 
-    <audio id="birthdayMusic" loop>
+    <!-- MUSIC: PLAYS AFTER OPENING GIFT -->
+
+    <audio id="birthdayMusic" loop preload="auto">
         <source src="birthday.mp3" type="audio/mpeg">
     </audio>
 
     <button class="music-btn" id="musicButton"
-            onclick="toggleMusic()">
-        🎵 Play Music
+            onclick="toggleMusic()" aria-label="Play or pause music">
+        🎵 Music
     </button>
 
 
-    <!-- SCREEN 1: SURPRISE -->
+    <!-- SCREEN 1 -->
 
     <section class="screen active" id="screen1">
 
@@ -475,13 +544,14 @@
             <h1>Hey, Birthday Boy! 👀</h1>
 
             <p>
-                Someone has prepared something special
-                just for you...
+                Someone has prepared something
+                very special just for you...
             </p>
 
             <div class="gift" onclick="nextScreen(2)"
                  role="button" tabindex="0"
-                 onkeydown="if(event.key==='Enter') nextScreen(2)">
+                 aria-label="Open birthday surprise"
+                 onkeydown="if(event.key==='Enter' || event.key===' '){event.preventDefault();nextScreen(2);}">
                 🎁
             </div>
 
@@ -505,7 +575,7 @@
     </section>
 
 
-    <!-- SCREEN 2: PHOTO REVEAL -->
+    <!-- SCREEN 2: PHOTO -->
 
     <section class="screen" id="screen2">
 
@@ -513,9 +583,9 @@
 
             <h1>Happy Birthday! 🎉</h1>
 
-            <!-- NAFIU PHOTO: EXACT FILE NAME -->
-
             <div class="photo-container">
+
+                <!-- NAFIU'S PHOTO -->
 
                 <img
                     src="Nafiu.jpeg"
@@ -524,9 +594,8 @@
                     onerror="this.style.display='none'; document.getElementById('photoError').style.display='block';"
                 >
 
-                <p id="photoError" style="display:none;
-                   padding-top:55px; font-size:13px;">
-                    Add Nafiu.jpeg
+                <p id="photoError" class="photo-fallback">
+                    📸 Add Nafiu.jpeg
                 </p>
 
             </div>
@@ -535,7 +604,7 @@
                 Tasnumur Rahoman Nafiu
             </div>
 
-            <div class="badge">
+            <div class="legend-badge">
                 🏆 The Legendary Barisailla Single Bhai
             </div>
 
@@ -579,7 +648,7 @@
     </section>
 
 
-    <!-- SCREEN 3: BIRTHDAY CAKE -->
+    <!-- SCREEN 3: CAKE -->
 
     <section class="screen" id="screen3">
 
@@ -595,13 +664,9 @@
             <div class="cake">
 
                 <div class="cake-bottom"></div>
-
                 <div class="cake-top"></div>
-
                 <div class="icing"></div>
-
                 <div class="candle"></div>
-
                 <div class="flame" id="flame"></div>
 
             </div>
@@ -626,7 +691,7 @@
     </section>
 
 
-    <!-- SCREEN 4: SPECIAL LETTER -->
+    <!-- SCREEN 4: LETTER -->
 
     <section class="screen" id="screen4">
 
@@ -666,8 +731,7 @@
 
                 <p>
                     এই অসাধারণ Record ধরে রাখার জন্য
-                    তোমাকে জানাই বিশেষ অভিনন্দন!
-                    😂
+                    তোমাকে জানাই বিশেষ অভিনন্দন! 😂
                 </p>
 
                 <p>
@@ -704,8 +768,7 @@
                     <span class="highlight">
                         Single Life থেকে Promotion
                     </span>
-                    নেওয়ার চেষ্টা করো!
-                    🤣
+                    নেওয়ার চেষ্টা করো! 🤣
                 </p>
 
                 <p>
@@ -747,7 +810,7 @@
     </section>
 
 
-    <!-- SCREEN 5: FINAL CELEBRATION -->
+    <!-- SCREEN 5: FINAL -->
 
     <section class="screen" id="screen5">
 
@@ -817,9 +880,57 @@
 
     <script>
 
-        // SCREEN NAVIGATION
+        // MUSIC ELEMENTS
+
+        const music = document.getElementById('birthdayMusic');
+        const musicButton = document.getElementById('musicButton');
+
+        let musicStarted = false;
+
+
+        // AUTOMATIC MUSIC START
+
+        function startBirthdayMusic() {
+
+            if (musicStarted && !music.paused) {
+                return;
+            }
+
+            const playPromise = music.play();
+
+            if (playPromise !== undefined) {
+
+                playPromise.then(function() {
+
+                    musicStarted = true;
+
+                    musicButton.textContent = '🔇 Pause Music';
+
+                }).catch(function(error) {
+
+                    console.log('Music could not start:', error);
+
+                    musicButton.textContent = '🎵 Play Music';
+
+                });
+
+            }
+
+        }
+
+
+        // NEXT SCREEN
 
         function nextScreen(number) {
+
+            /*
+             * Start music when Nafiu opens the gift.
+             * The button tap allows sound on mobile browsers.
+             */
+
+            if (number === 2 && !musicStarted) {
+                startBirthdayMusic();
+            }
 
             const screens = document.querySelectorAll('.screen');
 
@@ -839,7 +950,26 @@
         }
 
 
-        // CONFETTI
+        // MUSIC PLAY / PAUSE
+
+        function toggleMusic() {
+
+            if (music.paused) {
+
+                startBirthdayMusic();
+
+            } else {
+
+                music.pause();
+
+                musicButton.textContent = '🎵 Play Music';
+
+            }
+
+        }
+
+
+        // CONFETTI ANIMATION
 
         function celebrate() {
 
@@ -888,7 +1018,12 @@
 
             balloon.className = 'balloon';
 
-            const emojis = ['🎈', '💖', '✨', '🎉'];
+            const emojis = [
+                '🎈',
+                '💖',
+                '✨',
+                '🎉'
+            ];
 
             balloon.textContent =
                 emojis[Math.floor(Math.random() * emojis.length)];
@@ -912,7 +1047,7 @@
         setInterval(createBalloon, 1000);
 
 
-        // BLOW OUT CANDLE
+        // BLOW CANDLE
 
         function blowCandle() {
 
@@ -920,7 +1055,7 @@
                 .classList.add('out');
 
             document.getElementById('candleMessage')
-                .innerHTML =
+                .textContent =
                 '🎉 Wish Granted! May all your dreams come true! ❤️';
 
             document.getElementById('blowButton')
@@ -934,40 +1069,7 @@
         }
 
 
-        // BACKGROUND MUSIC
-
-        const music = document.getElementById('birthdayMusic');
-
-        const musicButton = document.getElementById('musicButton');
-
-        function toggleMusic() {
-
-            if (music.paused) {
-
-                music.play().then(function() {
-
-                    musicButton.textContent = '🔇 Pause Music';
-
-                }).catch(function() {
-
-                    musicButton.textContent = '🎵 Play Music';
-
-                    alert('Please add birthday.mp3 to your project folder.');
-
-                });
-
-            } else {
-
-                music.pause();
-
-                musicButton.textContent = '🎵 Play Music';
-
-            }
-
-        }
-
-
-        // REPLAY WEBSITE
+        // RESTART SURPRISE
 
         function restartWebsite() {
 
@@ -975,7 +1077,8 @@
                 .classList.remove('out');
 
             document.getElementById('candleMessage')
-                .textContent = 'এবার Candle নিভিয়ে ফেলো! 🌬️';
+                .textContent =
+                'এবার Candle নিভিয়ে ফেলো! 🌬️';
 
             document.getElementById('blowButton')
                 .style.display = 'inline-block';
